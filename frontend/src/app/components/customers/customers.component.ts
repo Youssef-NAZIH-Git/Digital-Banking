@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 export class CustomersComponent implements OnInit {
   customers! : Observable<Array<Customer>>;
   errorMessage! : string;
+  deleteSucessMessage! : string;
+  deleteErrorMessage! : string;
   searchFormGroup! : FormGroup
 
   constructor(private customerService : CustomerService, private fb : FormBuilder) { }
@@ -35,6 +37,21 @@ export class CustomersComponent implements OnInit {
         return throwError(err);
       })
     )
+  }
+
+  deleteCustomer(customerToDelete: Customer){
+    this.customerService.deleteCustomer(customerToDelete.id).subscribe({
+      next : _ => {
+        this.deleteSucessMessage = 'Customer deleted sucessfully';
+        setTimeout(() => {this.deleteSucessMessage = ''}, 3000);
+        this.searchForCustomer();
+      },
+      error : err => {
+        this.errorMessage = err.message;
+        setTimeout(() => {this.errorMessage = ''}, 3000);
+        this.searchForCustomer();
+      }
+    })
   }
 }
 

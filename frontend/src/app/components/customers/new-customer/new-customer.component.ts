@@ -21,7 +21,7 @@ export class NewCustomerComponent implements OnInit {
   
   ngOnInit(): void {
     this.addFormGroup = this.fb.group({
-      nom: this.fb.control(null, [Validators.required]),
+      name: this.fb.control(null, [Validators.required]),
       email: this.fb.control(null, [Validators.required, Validators.email])
     })
   }
@@ -30,8 +30,8 @@ export class NewCustomerComponent implements OnInit {
     let customer : Customer = this.addFormGroup.value;
     this.customerService.saveCustomer(customer).subscribe({
       next : data => {
-        this.successMessage = 'Customer successfully added, redirecting in 5 seconds'
-        setTimeout(() => this.router.navigateByUrl('/customers'), 5000);
+        this.successMessage = 'Customer successfully added, redirecting in 2 seconds'
+        setTimeout(() => this.router.navigateByUrl('/customers'), 2000);
       },
       error : err => {
         this.errorMessage = 'Error: ' + err.message;

@@ -1,4 +1,11 @@
 <div class="m-4">
+    <div *ngIf="deleteSucessMessage" class="alert alert-success" role="alert">
+        {{deleteSucessMessage}}
+    </div>
+
+    <div *ngIf="deleteErrorMessage" class="alert alert-success" role="alert">
+        {{deleteErrorMessage}}
+    </div>
     <ng-container *ngIf="customers | async as listCustomers; else failedOrLoading">
         <div>
             <div class="d-flex align-items-center gap-2">
@@ -17,6 +24,7 @@
                         <td>ID</td>
                         <td>Nom</td>
                         <td>E-Mail</td>
+                        <td>Delete</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +32,7 @@
                         <td>{{c.id}}</td>
                         <td>{{c.name}}</td>
                         <td>{{c.email}}</td>
+                        <td><button class="btn btn-danger" (click)="deleteCustomer(c)"><i class="bi bi-trash"></i></button></td>
                     </tr>
                 </tbody>
             </table>   
