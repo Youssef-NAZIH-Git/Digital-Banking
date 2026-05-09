@@ -34,7 +34,13 @@ export class CustomersComponent implements OnInit {
   }
 
   searchForCustomer(){
-    this.searchFormGroup.get
+    let kw = this.searchFormGroup?.value.keyword;
+    this.customers = this.customerService.searchCustomers(kw).pipe(
+      catchError(err => {
+        this.errorMessage = err.message;
+        return throwError(err);
+      })
+    )
   }
 }
 
