@@ -13,11 +13,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './customers.component.css'
 })
 export class CustomersComponent implements OnInit {
-  customers! : Observable<Array<Customer>>;
+  customers! : Customer[];
+  errorMessage! : string;
   constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {
-    this.customers = this.customerService.getCustomers();
+    this.customerService.getCustomers().subscribe({
+      next: (data) => {
+        this.customers = data;
+      },
+      error: (err: Error) => {
+        this.errorMessage = err.message
+      }
+    })
   }
 }
 
