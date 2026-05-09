@@ -40,9 +40,11 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer(customerToDelete: Customer){
+    let confirmation = confirm('Are you sure?');
+    if (!confirmation) return;
     this.customerService.deleteCustomer(customerToDelete.id).subscribe({
       next : _ => {
-        this.deleteSucessMessage = 'Customer deleted sucessfully';
+        this.deleteSucessMessage = customerToDelete.name + ' deleted sucessfully';
         setTimeout(() => {this.deleteSucessMessage = ''}, 3000);
         this.searchForCustomer();
       },
