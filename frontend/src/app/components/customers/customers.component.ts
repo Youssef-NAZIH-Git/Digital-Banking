@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, delay, map, Observable, throwError } from 'rxjs';
-import { Customer } from '../model/customer';
-import { CustomerService } from '../services/customer.service';
+import { Customer } from '../../models/customer';
+import { CustomerService } from '../../services/customer.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
