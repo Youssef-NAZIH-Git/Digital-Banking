@@ -1,7 +1,5 @@
 <div class="m-4">
-    <div *ngIf="errorMessage" class="alert alert-danger">
-        <p>{{errorMessage}}</p>
-    </div>
+    <ng-container *ngIf="customers | async as listCustomers; else failedOrLoading">
     <table class="table table-striped" *ngIf="customers">
         <thead>
             <tr>
@@ -11,11 +9,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let c of customers">
+            <tr *ngFor="let c of listCustomers">
                 <td>{{c.id}}</td>
                 <td>{{c.name}}</td>
                 <td>{{c.email}}</td>
             </tr>
         </tbody>
     </table>
+    </ng-container>
+    
+
+    <ng-template #failedOrLoading>
+        <ng-container *ngIf="errorMessage; else loading">
+            <div class="alert alert-danger">
+                <p>{{errorMessage}}</p>
+            </div>
+        </ng-container>
+        <ng-template #loading>
+            <div class="alert alert-primary" role="alert">
+                Loading
+            </div>
+        </ng-template>
+    </ng-template>
 </div>
