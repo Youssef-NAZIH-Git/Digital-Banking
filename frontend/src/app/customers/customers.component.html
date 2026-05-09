@@ -1,21 +1,29 @@
 <div class="m-4">
     <ng-container *ngIf="customers | async as listCustomers; else failedOrLoading">
-    <table class="table table-striped" *ngIf="customers">
-        <thead>
-            <tr>
-                <td>ID</td>
-                <td>Nom</td>
-                <td>E-Mail</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let c of listCustomers">
-                <td>{{c.id}}</td>
-                <td>{{c.name}}</td>
-                <td>{{c.email}}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div>
+            <form *ngIf="searchFormGroup" [formGroup]="searchFormGroup" (ngSubmit)="searchForCustomer()" class="d-flex align-items-center gap-2">
+                <label for="" class="form-label flex-shrink-0">Entrez un nom ou partie du nom</label>
+                <input type="text" class="form-control" formControlName="keyword">
+                <button class="btn btn-success"><i class="bi bi-search"></i></button>
+            </form>
+            <table class="table table-striped" *ngIf="customers">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nom</td>
+                        <td>E-Mail</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of listCustomers">
+                        <td>{{c.id}}</td>
+                        <td>{{c.name}}</td>
+                        <td>{{c.email}}</td>
+                    </tr>
+                </tbody>
+            </table>   
+        </div>
+
     </ng-container>
     
 

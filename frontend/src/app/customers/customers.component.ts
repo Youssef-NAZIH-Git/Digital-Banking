@@ -15,17 +15,26 @@ import { CommonModule } from '@angular/common';
 export class CustomersComponent implements OnInit {
   customers! : Observable<Array<Customer>>;
   errorMessage! : string;
-  constructor(private customerService : CustomerService) { }
+  searchFormGroup! : FormGroup
+
+  constructor(private customerService : CustomerService, private fb : FormBuilder) { }
 
   ngOnInit(): void {
+    this.searchFormGroup = this.fb.group({
+      keyword: this.fb.control("")
+    })
 
     this.customers = this.customerService.getCustomers().pipe(
-      delay(3000),
+      delay(1000), // Hada gha pour simuler delay a monsieur
       catchError(err => {
         this.errorMessage = err.message;
         return throwError(err);
       })
     )
+  }
+
+  searchForCustomer(){
+    this.searchFormGroup.get
   }
 }
 
