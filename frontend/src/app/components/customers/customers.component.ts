@@ -51,7 +51,6 @@ export class CustomersComponent implements OnInit {
       error : err => {
         this.errorMessage = err.message;
         setTimeout(() => {this.errorMessage = ''}, 3000);
-        this.searchForCustomer();
       }
     })
   }

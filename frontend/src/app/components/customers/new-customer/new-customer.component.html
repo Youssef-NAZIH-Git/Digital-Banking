@@ -1,13 +1,18 @@
 <div class="d-flex justify-content-center">
     <form [formGroup]="addFormGroup" (ngSubmit)="addCustomer()">
-    <div class="mb-3">
-        <label for="adresse-email" class="form-label">Email address</label>
-        <input formControlName='email' type="email" class="form-control" id="adresse-email" aria-describedby="emailHelp">
-    </div>
+
     <div class="mb-3">
         <label for="nom" class="form-label">Name</label>
-        <input formControlName="name" type="text" class="form-control" id="nom">
+        <input [class.is-invalid]="addFormGroup.controls['name'].touched && addFormGroup.controls['name'].errors" formControlName="name" type="text" class="form-control" id="nom">
+        <div class="invalid-feedback" role="alert">Name isn't valid</div>
     </div>
+
+    <div class="mb-3">
+        <label for="adresse-email" class="form-label">Email address</label>
+        <input [class.is-invalid]="addFormGroup.controls['email'].touched && addFormGroup.controls['email'].errors" formControlName='email' type="email" class="form-control" id="adresse-email" aria-describedby="emailHelp">
+        <div class="invalid-feedback" role="alert">E-Mail isn't valid</div>
+    </div>
+
     <div class="d-flex">
         <button type="submit" class="btn btn-primary flex-grow-1">Ajouter</button>
     </div>
@@ -21,6 +26,4 @@
     </div>
 
     </form>
-
-    
 </div>
