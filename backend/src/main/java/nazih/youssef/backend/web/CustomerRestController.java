@@ -5,17 +5,19 @@ import lombok.extern.slf4j.Slf4j;
 import nazih.youssef.backend.dtos.CustomerDTO;
 import nazih.youssef.backend.exceptions.CustomerNotFoundException;
 import nazih.youssef.backend.services.BankAccountService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@PreAuthorize("hasAuthority('SCOPE_ADMIN')")
 @Slf4j
-@CrossOrigin("*")
 public class CustomerRestController {
     private BankAccountService bankAccountService;
     @GetMapping("/customers")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN', 'SCOPE_USER')")
     public List<CustomerDTO> customers(){
         return bankAccountService.listCustomers();
     }

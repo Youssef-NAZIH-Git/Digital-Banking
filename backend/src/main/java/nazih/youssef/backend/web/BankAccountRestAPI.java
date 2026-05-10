@@ -4,12 +4,13 @@ import nazih.youssef.backend.dtos.*;
 import nazih.youssef.backend.exceptions.BalanceNotSufficientException;
 import nazih.youssef.backend.exceptions.BankAccountNotFoundException;
 import nazih.youssef.backend.services.BankAccountService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@PreAuthorize("hasAuthority('SCOPE_ADMIN')")
 @RestController
-@CrossOrigin("*")
 public class BankAccountRestAPI {
     private BankAccountService bankAccountService;
 
