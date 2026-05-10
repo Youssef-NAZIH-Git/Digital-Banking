@@ -5,10 +5,10 @@ import { NewCustomerComponent } from './components/customers/new-customer/new-cu
 import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'admin', redirectTo: 'customers', pathMatch: 'full'},
     {path: "customers", component: CustomersComponent},
     {path: "accounts", component: AccountsComponent},
     {path: "new-customer", component: NewCustomerComponent},
     {path: 'login', component: LoginComponent},
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'admin', redirectTo: 'customers', pathMatch: 'full'}
 ];
