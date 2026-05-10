@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Customer } from '../../models/customer';
-import { CustomerService } from '../../services/customer.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CustomerService } from '../../services/customer/customer.service';
 
 @Component({
   selector: 'app-customers',

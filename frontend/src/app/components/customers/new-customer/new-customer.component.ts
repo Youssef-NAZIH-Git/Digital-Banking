@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../../../services/customer.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Customer } from '../../../models/customer';
 import { delay } from 'rxjs';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CustomerService } from '../../../services/customer/customer.service';
 
 @Component({
   selector: 'app-new-customer',
