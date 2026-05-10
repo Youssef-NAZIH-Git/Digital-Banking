@@ -1,4 +1,4 @@
-export interface Account {
+export interface AccountDetails {
     accountId:            string;
     accountOperationDTOS: AccountOperation[];
     balance:              number;
