@@ -23,6 +23,18 @@ public class BankAccountMapperImpl {
         return  customer;
     }
 
+
+    public AccountOperationDTO fromAccountOperation(AccountOperation accountOperation){
+        AccountOperationDTO accountOperationDTO=new AccountOperationDTO();
+        BeanUtils.copyProperties(accountOperation,accountOperationDTO);
+        return  accountOperationDTO;
+    }
+    public AccountOperation fromAccountOperationDTO(AccountOperationDTO accountOperationDTO){
+        AccountOperation accountOperation=new AccountOperation();
+        BeanUtils.copyProperties(accountOperationDTO,accountOperation);
+        return accountOperation;
+    }
+
     public SavingBankAccountDTO fromSavingBankAccount(SavingAccount savingAccount){
         SavingBankAccountDTO savingBankAccountDTO=new SavingBankAccountDTO();
         BeanUtils.copyProperties(savingAccount,savingBankAccountDTO);
@@ -53,10 +65,6 @@ public class BankAccountMapperImpl {
         return currentAccount;
     }
 
-    public AccountOperationDTO fromAccountOperation(AccountOperation accountOperation){
-        AccountOperationDTO accountOperationDTO=new AccountOperationDTO();
-        BeanUtils.copyProperties(accountOperation,accountOperationDTO);
-        return accountOperationDTO;
-    }
+
 
 }
