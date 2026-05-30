@@ -1,7 +1,6 @@
 package nazih.youssef.backend.repositories;
 
 import nazih.youssef.backend.entities.AccountOperation;
-import nazih.youssef.backend.entities.BankAccount;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
