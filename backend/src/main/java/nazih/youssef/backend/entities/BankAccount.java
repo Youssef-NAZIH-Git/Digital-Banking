@@ -14,7 +14,7 @@ import java.util.List;
 @DiscriminatorColumn(name = "TYPE",length = 4)
 @Data @NoArgsConstructor @AllArgsConstructor
 public abstract class BankAccount {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private double balance;
     private Date createdAt;

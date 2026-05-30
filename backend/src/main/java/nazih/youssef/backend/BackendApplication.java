@@ -24,7 +24,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Stream;
 
 @SpringBootApplication
@@ -79,7 +78,6 @@ public class BackendApplication {
             });
             customerRepository.findAll().forEach(cust->{
                 CurrentAccount currentAccount=new CurrentAccount();
-                currentAccount.setId(UUID.randomUUID().toString());
                 currentAccount.setBalance(Math.random()*90000);
                 currentAccount.setCreatedAt(new Date());
                 currentAccount.setStatus(AccountStatus.CREATED);
@@ -88,7 +86,6 @@ public class BackendApplication {
                 bankAccountRepository.save(currentAccount);
 
                 SavingAccount savingAccount=new SavingAccount();
-                savingAccount.setId(UUID.randomUUID().toString());
                 savingAccount.setBalance(Math.random()*90000);
                 savingAccount.setCreatedAt(new Date());
                 savingAccount.setStatus(AccountStatus.CREATED);

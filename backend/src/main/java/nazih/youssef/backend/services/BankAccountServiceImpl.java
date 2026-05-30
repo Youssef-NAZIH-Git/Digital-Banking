@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nazih.youssef.backend.dtos.*;
 import nazih.youssef.backend.entities.*;
-import nazih.youssef.backend.enums.OperationType;
-import nazih.youssef.backend.exceptions.BalanceNotSufficientException;
 import nazih.youssef.backend.exceptions.BankAccountNotFoundException;
 import nazih.youssef.backend.exceptions.CustomerNotFoundException;
 import nazih.youssef.backend.mappers.BankAccountMapperImpl;
@@ -17,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,7 +33,6 @@ public class BankAccountServiceImpl implements BankAccountService {
         if(customer==null)
             throw new CustomerNotFoundException("Customer not found");
         CurrentAccount currentAccount=new CurrentAccount();
-        currentAccount.setId(UUID.randomUUID().toString());
         currentAccount.setCreatedAt(new Date());
         currentAccount.setBalance(initialBalance);
         currentAccount.setOverDraft(overDraft);
@@ -51,7 +47,6 @@ public class BankAccountServiceImpl implements BankAccountService {
         if(customer==null)
             throw new CustomerNotFoundException("Customer not found");
         SavingAccount savingAccount=new SavingAccount();
-        savingAccount.setId(UUID.randomUUID().toString());
         savingAccount.setCreatedAt(new Date());
         savingAccount.setBalance(initialBalance);
         savingAccount.setInterestRate(interestRate);
